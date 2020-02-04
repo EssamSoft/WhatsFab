@@ -2,6 +2,7 @@
 
 /**
  * Plugin Name: WhatsFab
+ * Pligin URL: https://github.com/EssamSoft/WhatsFab
  * Description: Whatsapp floating action button.
  * Version: 1.0
  * Author: EssamSoft
