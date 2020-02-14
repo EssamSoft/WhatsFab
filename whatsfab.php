@@ -89,12 +89,14 @@ function whatsfab_settings() {
     add_settings_field("whatsfab-support-name", "", "whatsfab_option_support_name", "whatsfab", "whatsfab_config");
     add_settings_field("whatsfab-support-status", "", "whatsfab_option_support_status", "whatsfab", "whatsfab_config");
     add_settings_field("whatsfab-message", "", "whatsfab_option_message", "whatsfab", "whatsfab_config");
+    add_settings_field("whatsfab-call", "", "whatsfab_option_call", "whatsfab", "whatsfab_config");
 
 	register_setting("whatsfab_config", "whatsfab-avatar");
     register_setting("whatsfab_config", "whatsfab-phone");
 	register_setting("whatsfab_config", "whatsfab-support-name");
 	register_setting("whatsfab_config", "whatsfab-support-status");
 	register_setting("whatsfab_config", "whatsfab-message");
+	register_setting("whatsfab_config", "whatsfab-call");
 }
 add_action("admin_init", "whatsfab_settings");
 
@@ -166,6 +168,21 @@ function whatsfab_option_message() {
 <?php
 }
 
+function whatsfab_option_call() {
+?>
+
+    <tr>
+        <th scope="row"><label for="whatsfab-call">Enable call</label></th>
+        <td>
+
+            <input type="checkbox" name="whatsfab-call" value="1" <?php checked(1, get_option('whatsfab-call'), true); ?> />
+
+        </td>
+    </tr>
+
+<?php
+}
+
 
 
 
@@ -210,23 +227,33 @@ function whatsfab() {
             <div class="chat-container">
                 <div class="user-bar">
 
-                <div class="avatar">
-                    <img src="<?php echo stripslashes_deep(esc_attr(get_option('whatsfab-avatar'))); ?>" alt="Avatar">
-                </div>
-                <div class="name">
-                    <span><?php echo stripslashes_deep(esc_attr(get_option('whatsfab-support-name'))); ?></span>
-                    <span class="status"><?php echo stripslashes_deep(esc_attr(get_option('whatsfab-support-status'))); ?></span>
-                </div>
-                        <div class="actions close">
-                    <i class="zmdi zmdi-close"></i>
+                    <div class="avatar">
+                        <img src="<?php echo stripslashes_deep(esc_attr(get_option('whatsfab-avatar'))); ?>" alt="Avatar">
                     </div>
+                    <div class="name">
+                        <span><?php echo stripslashes_deep(esc_attr(get_option('whatsfab-support-name'))); ?></span>
+                        <span class="status"><?php echo stripslashes_deep(esc_attr(get_option('whatsfab-support-status'))); ?></span>
+                    </div>
+                    <div class="actions close">
+                         <i class="zmdi zmdi-close"></i>
+                    </div>
+
+                    <?php if(get_option('whatsfab-call')) : ?>
+                        <div class="actions call">
+                            <a href="tel:00<?php echo stripslashes_deep(esc_attr(get_option('whatsfab-phone'))); ?>">
+                                <i class="zmdi zmdi-phone"></i>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+
+
                 </div>
                 <div class="conversation">
                 <div class="conversation-container">
 
                     <div class="message received" style="direction:rtl;text-align: right;">
-                    <?php echo stripslashes_deep(get_option('whatsfab-message')); ?>
-                    <span class="metadata"><span class="time"></span></span>
+                        <?php echo stripslashes_deep(get_option('whatsfab-message')); ?>
+                        <span class="metadata"><span class="time"></span></span>
                     </div>
 
 
