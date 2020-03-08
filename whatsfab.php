@@ -4,7 +4,7 @@
  * Plugin Name: WhatsFab
  * Pligin URL: https://github.com/EssamSoft/WhatsFab
  * Description: Whatsapp floating action button.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: EssamSoft
  * Author URI: http://essamsoft.com/
  * License: GPL2
@@ -17,16 +17,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 
+add_action('init', 'register_script');
+function register_script() {
+    wp_register_script( 'scriptWhatsfab', plugins_url('/script.js', __FILE__) );
+
+    wp_register_style( 'whatsfabStyle', plugins_url('style.css', __FILE__), false, '1.0.0', 'all');
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_style');
+
+function enqueue_style(){
+    wp_enqueue_script('scriptWhatsfab');
+
+   wp_enqueue_style( 'whatsfabStyle' );
+}
+
 add_action('wp_head','load_assets');
 function load_assets() {
 ?>
 <script type="text/javascript"> var whatsappNumber = <?php echo stripslashes_deep(esc_attr(get_option('whatsfab-phone'))); ?>; </script>
-<link rel="stylesheet" href="<?php echo plugins_url("whatsfab"); ?>/style.css">
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script src="<?php echo plugins_url("whatsfab"); ?>/script.js" ></script>
+
 <?php
 }
 
@@ -182,28 +192,6 @@ function whatsfab_option_call() {
 
 <?php
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 add_action( 'wp_footer', 'whatsfab' );
 
