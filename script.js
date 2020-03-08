@@ -1,4 +1,4 @@
-
+var $ = jQuery;
 $(document).ready(function() {
 
     $(".conversation-compose .send").on( "click", function() {
