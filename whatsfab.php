@@ -4,7 +4,7 @@
  * Plugin Name: WhatsFab
  * Pligin URL: https://github.com/EssamSoft/WhatsFab
  * Description: Whatsapp floating action button.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: EssamSoft
  * Author URI: http://essamsoft.com/
  * License: GPL2
@@ -31,6 +31,22 @@ function enqueue_style(){
 
    wp_enqueue_style( 'whatsfabStyle' );
 }
+
+
+
+
+// add_action('wp_enqueue_scripts', 'callback_for_setting_up_scripts');
+// function callback_for_setting_up_scripts() {
+//     wp_register_style('styleWhatsfab', plugins_url('style.css',__FILE__ ));
+//     wp_enqueue_style('styleWhatsfab');
+
+//     wp_register_style('styleWhatsfab', plugins_url('style.css',__FILE__ ));
+//     wp_enqueue_style('styleWhatsfab');
+
+//     wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', array( 'jquery' ) );
+//     wp_enqueue_script( 'scriptWhatsfab', plugins_url('script.js',__FILE__ ) );
+// }
+
 
 add_action('wp_head','load_assets');
 function load_assets() {
@@ -201,7 +217,7 @@ function whatsfab() {
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 
     <button class="whatsapp-button">
         <i class="fa fa-whatsapp"></i>
