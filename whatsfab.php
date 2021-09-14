@@ -33,9 +33,10 @@ function whatsfab_enqueue_scripts() {
 
     $plugins_dir = whatsfab_plugin_url();
     $showWhatsfabAlert = (hard_trim(get_option('whatsfab-popup')) != "") ? 'true' : 'false';
+    $whatsappNumber = hard_trim(get_option('whatsfab-phone'));
 
     wp_enqueue_script( 'whatsfab', whatsfab_plugin_url( 'js/script.js' ),array( 'jquery' ), WHATSFAB_VERSION, true );
-    wp_add_inline_script( 'whatsfab', "var whatsfabDir = '$plugins_dir';var showWhatsfabAlert = $showWhatsfabAlert;",'before' );
+    wp_add_inline_script( 'whatsfab', "var whatsfabDir = '$plugins_dir';var showWhatsfabAlert = $showWhatsfabAlert; var whatsappNumber = '$whatsappNumber';",'before' );
 
     whatsfab_enqueue_styles();
 
@@ -55,15 +56,8 @@ function whatsfab_enqueue_styles() {
 
 
 
-if(get_option('whatsfab-call')) :
-add_action('wp_head','load_assets');
-function load_assets() {
-?>
-<script type="text/javascript"> var whatsappNumber = <?php echo hard_trim(get_option('whatsfab-phone')); ?>; </script>
+ 
 
-<?php
-}
-endif;
 
 
 function whats_admin_menu() {
