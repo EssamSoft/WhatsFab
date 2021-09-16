@@ -1,16 +1,20 @@
 (function ($) {
 	"use strict";
 
+	let whatsCookie = getCookie("visitorDidListenWhatsAppAlert");
+
 	setTimeout(function () {
 		if (showWhatsfabAlert) {
 			showPopUp();
 		}
-	}, 3000);
+	}, 5000);
 
 	function showPopUp() {
-		var audioBell = new Audio(whatsfabDir + "/assets/bell.mp3");
-		audioBell.play();
-
+		if (whatsCookie != "true") {
+			var audioBell = new Audio(whatsfabDir + "/assets/bell.mp3");
+			audioBell.play();
+			setCookie("visitorDidListenWhatsAppAlert", "true", 1);
+		}
 		$(".wf_welcome_alert_container").addClass("wf_opened");
 		$(".wf_welcome_alert_container").removeAttr("style");
 	}
@@ -59,4 +63,27 @@
 			$(".wf_whatsapp").removeAttr("style");
 		}
 	);
+
+	function setCookie(cname, cvalue, exdays) {
+		const d = new Date();
+		d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+		let expires = "expires=" + d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+		let name = cname + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == " ") {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
 })(jQuery);
