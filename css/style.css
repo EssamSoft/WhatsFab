@@ -7,13 +7,15 @@
 .wf {
 	font-family: "Almarai", sans-serif;
 }
+
 .wf_whatsapp-button:active {
 	border: none;
 }
+
 .wf_whatsapp-button {
 	outline: none !important;
 	background-color: #39887c;
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 12px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 3px 12px;
 	display: flex;
 	color: #fff;
 	-webkit-box-pack: center;
@@ -28,17 +30,18 @@
 	height: 60px;
 	border-radius: 50%;
 	border: none;
-	right: 30px;
 	outline: none;
 	bottom: 30px;
 }
+
 .wf_whatsapp-button.wf_invert {
 	color: #39887c;
 	background-color: #fff;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 12px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 3px 12px;
 }
+
 .wf_whatsapp-button .zmdi {
-	margin: -1px 0 0px 1px;
+	margin: -1px 0 0 1px;
 	font-size: 37px;
 	font-weight: 100;
 }
@@ -54,59 +57,58 @@
 	max-width: 320px;
 	z-index: 99999;
 	position: fixed;
-	right: 30px;
 	bottom: 100px;
-	direction: rtl;
-	padding-left: 35px;
 }
+
 .close_wf_welcome_alert {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	top: -15px;
 	cursor: pointer;
-	background: #333;
 	border-radius: 5px;
+	text-shadow: 0px 0px 3px #00000073;
 	padding: 10px;
 	color: #fff;
 }
 .wf_welcome_alert {
 	max-width: 320px;
-	right: 30px;
 	cursor: pointer;
 	bottom: 100px;
 	border-radius: 8px;
 	overflow: hidden;
 	background: #eee;
-	box-shadow: rgb(0 0 0 / 20%) 0px 12px 24px 0px;
+	box-shadow: rgb(0 0 0 / 20%) 0 12px 24px 0;
 	padding: 10px;
 }
+
 .wf_whatsapp {
 	width: 320px;
 	height: 370px;
 	z-index: 99999;
 	position: fixed;
-	right: 30px;
 	display: none;
 	bottom: 100px;
 	opacity: 0;
 	border-radius: 8px;
 	overflow: hidden;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 24px 0px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 12px 24px 0;
 	direction: ltr;
-	-webkit-animation: closed 300ms; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: closed 300ms; /* Firefox < 16 */
-	-ms-animation: closed 300ms; /* Internet Explorer */
-	-o-animation: closed 300ms; /* Opera < 12.1 */
+	-webkit-animation: closed 300ms;
+	-moz-animation: closed 300ms;
+	-ms-animation: closed 300ms;
+	-o-animation: closed 300ms;
 	animation: closed 300ms;
 }
+
 .wf_whatsapp .wf_screen {
 	height: 100%;
 }
+
 @keyframes closed {
 	from {
 		opacity: 1;
 		bottom: 100px;
 	}
+
 	to {
 		opacity: 0;
 		bottom: 70px;
@@ -118,6 +120,7 @@
 		opacity: 0;
 		bottom: 70px;
 	}
+
 	to {
 		opacity: 1;
 		bottom: 100px;
@@ -128,17 +131,16 @@
 .wf_welcome_alert_container.wf_opened {
 	opacity: 1;
 	display: block;
-	-webkit-animation: opened 300ms; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: opened 300ms; /* Firefox < 16 */
-	-ms-animation: opened 300ms; /* Internet Explorer */
-	-o-animation: opened 300ms; /* Opera < 12.1 */
+	-webkit-animation: opened 300ms;
+	-moz-animation: opened 300ms;
+	-ms-animation: opened 300ms;
+	-o-animation: opened 300ms;
 	animation: opened 300ms;
 }
+
 .wf_screen-container {
 	height: 100%;
 }
-
-/* Chat */
 
 .wf_chat {
 	height: calc(100% - 69px);
@@ -148,10 +150,8 @@
 	height: 100%;
 }
 
-/* User Bar */
-
 .wf_user-bar {
-	height: 55px;
+	height: 56px;
 	background: #005e54;
 	color: #fff;
 	padding: 0 8px;
@@ -178,6 +178,7 @@
 	color: #fff;
 	margin: 0 0 0 20px;
 }
+
 .wf_user-bar .wf_actions a {
 	color: #fff;
 }
@@ -236,8 +237,6 @@
 	letter-spacing: 0;
 }
 
-/* Conversation */
-
 .wf_conversation {
 	height: calc(100% + 14px);
 	position: relative;
@@ -262,10 +261,13 @@
 
 .wf_conversation .wf_conversation-container {
 	height: calc(100% - 68px);
-	box-shadow: inset 0 10px 10px -10px #000000;
+	box-shadow: inset 0 10px 10px -10px #000;
 	overflow-x: hidden;
 	padding: 0 16px;
 	margin-bottom: 5px;
+	left: 0;
+	right: 0;
+	width: 100%;
 }
 
 .wf_conversation .wf_conversation-container:after {
@@ -273,8 +275,6 @@
 	display: table;
 	clear: both;
 }
-
-/* Messages */
 
 .wf_message {
 	color: #333;
@@ -354,7 +354,7 @@
 
 .wf_message.wf_received {
 	background: #fff;
-	border-radius: 0px 5px 5px 5px;
+	border-radius: 0 5px 5px 5px;
 	float: left;
 }
 
@@ -363,7 +363,7 @@
 }
 
 .wf_message.wf_received:after {
-	border-width: 0px 10px 10px 0;
+	border-width: 0 10px 10px 0;
 	border-color: transparent #fff transparent transparent;
 	top: 0;
 	left: -10px;
@@ -371,18 +371,16 @@
 
 .wf_message.wf_sent {
 	background: #e1ffc7;
-	border-radius: 5px 0px 5px 5px;
+	border-radius: 5px 0 5px 5px;
 	float: right;
 }
 
 .wf_message.wf_sent:after {
-	border-width: 0px 0 10px 10px;
+	border-width: 0 0 10px 10px;
 	border-color: transparent transparent transparent #e1ffc7;
 	top: 0;
 	right: -10px;
 }
-
-/* Compose */
 
 .wf_conversation-compose {
 	display: flex;
@@ -404,7 +402,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: white;
+	background: #fff;
 	border-radius: 5px 0 0 5px;
 	flex: 0 0 auto;
 	margin-left: 8px;
@@ -433,7 +431,7 @@
 }
 
 .wf_conversation-compose .wf_photo:after {
-	border-width: 0px 0 10px 10px;
+	border-width: 0 0 10px 10px;
 	border-color: transparent transparent transparent #fff;
 	border-style: solid;
 	position: absolute;
@@ -483,8 +481,6 @@
 	margin-left: 5px;
 }
 
-/* Small Screens */
-
 @media (max-width: 435px) {
 	.wf_whatsapp {
 		width: 90%;
@@ -496,7 +492,7 @@
 
 .wf_animate_button {
 	background-color: #39887c;
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 12px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 3px 12px;
 	display: flex;
 	color: #fff;
 	-webkit-box-pack: center;
@@ -511,35 +507,69 @@
 	height: 60px;
 	border-radius: 50%;
 	border: none;
-	right: 30px;
 	outline: none;
 	bottom: 30px;
 }
+
 @-webkit-keyframes zoomIn {
 	0% {
 		opacity: 1;
 		transform: scale(1);
 	}
+
 	100% {
 		transform: scale(1.3);
-
 		opacity: 0;
 	}
 }
+
 @keyframes zoomIn {
 	0% {
 		opacity: 1;
 		transform: scale(1);
 	}
+
 	100% {
 		transform: scale(1.3);
-
 		opacity: 0;
 	}
 }
+
 .zoomIn-flicker {
 	-webkit-animation: zoomIn 1.2s infinite;
 	-moz-animation: zoomIn 1.2s infinite;
 	-o-animation: zoomIn 1.2s infinite;
 	animation: zoomIn 1.2s infinite;
+}
+
+.left_wf .wf_welcome_alert,
+.left_wf .wf_animate_button,
+.left_wf .wf_whatsapp,
+.left_wf .wf_whatsapp-button {
+	left: 30px;
+}
+
+.left_wf .close_wf_welcome_alert {
+	left: 23px;
+}
+
+.left_wf .wf_welcome_alert_container {
+	left: 0;
+	padding-left: 35px;
+}
+
+.right_wf .wf_welcome_alert,
+.right_wf .wf_animate_button,
+.right_wf .wf_whatsapp,
+.right_wf .wf_whatsapp-button {
+	right: 30px;
+}
+
+.right_wf .close_wf_welcome_alert {
+	right: 23px;
+}
+
+.right_wf .wf_welcome_alert_container {
+	right: 0;
+	padding-right: 35px;
 }

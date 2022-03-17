@@ -14,9 +14,9 @@
 			var audioBell = new Audio(whatsfabDir + "/assets/bell.mp3");
 			audioBell.play();
 			setCookie("visitorDidListenWhatsAppAlert", "true", 1);
+			$(".wf_welcome_alert_container").addClass("wf_opened");
+			$(".wf_welcome_alert_container").removeAttr("style");
 		}
-		$(".wf_welcome_alert_container").addClass("wf_opened");
-		$(".wf_welcome_alert_container").removeAttr("style");
 	}
 
 	$(".wf_conversation-compose .wf_send").on("click", function () {

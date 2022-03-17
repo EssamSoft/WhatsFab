@@ -4,7 +4,7 @@
  * Plugin Name: WhatsFab
  * Pligin URL: https://github.com/EssamSoft/WhatsFab
  * Description: Whatsapp floating action button.
- * Version: 1.1
+ * Version: 1.2
  * Author: EssamSoft
  * Author URI: http://essamsoft.com/
  * License: GPL2
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define( 'WHATSFAB_VERSION', '1.1' );
+define( 'WHATSFAB_VERSION', '1.2' );
 define( 'WHATSFAB_REQUIRED_WP_VERSION', '5.4' );
 define( 'WHATSFAB_PLUGIN', __FILE__ );
 
@@ -118,6 +118,7 @@ function whatsfab_settings() {
     add_settings_field("whatsfab-message", "", "whatsfab_option_message", "whatsfab", "whatsfab_config");
     add_settings_field("whatsfab-popup", "", "whatsfab_option_popup", "whatsfab", "whatsfab_config");
     add_settings_field("whatsfab-call", "", "whatsfab_option_call", "whatsfab", "whatsfab_config");
+    add_settings_field("whatsfab-position", "", "whatsfab_option_position", "whatsfab", "whatsfab_config");
     add_settings_field("whatsfab-animation-btn", "", "whatsfab_option_animation_btn", "whatsfab", "whatsfab_config");
 
 	register_setting("whatsfab_config", "whatsfab-avatar");
@@ -127,6 +128,7 @@ function whatsfab_settings() {
 	register_setting("whatsfab_config", "whatsfab-message");
 	register_setting("whatsfab_config", "whatsfab-popup");
 	register_setting("whatsfab_config", "whatsfab-call");
+	register_setting("whatsfab_config", "whatsfab-position");
 	register_setting("whatsfab_config", "whatsfab-animation-btn");
 }
 add_action("admin_init", "whatsfab_settings");
@@ -190,7 +192,7 @@ function whatsfab_option_message() {
     <tr>
         <th scope="row"><label for="whatsfab-message">Welcome message</label></th>
         <td>
-            <textarea name="whatsfab-message" ><?php echo hard_trim(get_option('whatsfab-message')); ?></textarea>
+            <textarea name="whatsfab-message" ><?php echo (get_option('whatsfab-message')); ?></textarea>
         </td>
     </tr>
 
@@ -213,6 +215,20 @@ function whatsfab_option_popup() {
 }
 
 
+function whatsfab_option_position() {
+?>
+
+    <tr>
+        <th scope="row"><label for="whatsfab-position">is RTL?</label></th>
+        <td>
+
+            <input type="checkbox" name="whatsfab-position" value="1" <?php checked(1, get_option('whatsfab-position'), true); ?> />
+
+        </td>
+    </tr>
+
+<?php
+}
 function whatsfab_option_call() {
 ?>
 
@@ -256,7 +272,7 @@ function whatsfab() { ?>
 
  
 
-    <div class="wf">
+    <div class="wf <?php echo (get_option('whatsfab-position')) ? "right_wf" : "left_wf" ; ?>">
 
     <div class="wf_welcome_alert_container">
         <i class="close_wf_welcome_alert zmdi zmdi-close"></i>
@@ -305,7 +321,7 @@ function whatsfab() { ?>
                 <div class="wf_conversation-container">
 
                     <div class="wf_message wf_received" style="direction:rtl;text-align: right;">
-                        <?php echo hard_trim(get_option('whatsfab-message')); ?>
+                        <?php echo (get_option('whatsfab-message')); ?>
                         <span class="wf_metadata"><span class="wf_time"></span></span>
                     </div>
 
