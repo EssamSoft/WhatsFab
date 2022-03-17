@@ -13,7 +13,6 @@
 		if (whatsCookie != "true") {
 			var audioBell = new Audio(whatsfabDir + "/assets/bell.mp3");
 			audioBell.play();
-			setCookie("visitorDidListenWhatsAppAlert", "true", 1);
 			$(".wf_welcome_alert_container").addClass("wf_opened");
 			$(".wf_welcome_alert_container").removeAttr("style");
 		}
@@ -43,12 +42,14 @@
 	$(".close_wf_welcome_alert").on("click", function () {
 		$(".wf_welcome_alert_container").removeClass("wf_opened");
 		$(".wf_welcome_alert_container").removeAttr("style");
+		setCookie("visitorDidListenWhatsAppAlert", "true", 1);
 	});
 
 	$(".wf_whatsapp-button, .wf_actions.wf_close, .wf_welcome_alert").on(
 		"click",
 		function () {
 			showWhatsfabAlert = false;
+			setCookie("visitorDidListenWhatsAppAlert", "true", 1);
 
 			$(".wf_animate_button").remove();
 
